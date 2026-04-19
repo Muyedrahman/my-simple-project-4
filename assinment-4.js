@@ -1,6 +1,6 @@
 // 1
 function totalFine( fare ) {
-          // You have to write your code here
+         
           if (typeof fare != "number" || fare <= 0){
             return "Invalid";
           }
@@ -12,23 +12,16 @@ function totalFine( fare ) {
 }
 // 2
 function  onlyCharacter( str ) {
-          // You have to write your code here
+         
         if (typeof str !== "string" ){
           return "Invalid";
         }
-        let result = "";
-        for(let i = 0; i < str.length; i++ ){
-          let character = str[i] ;
-          if( character !== " "){
-          result += character.toUpperCase();
-          }
-
-        }
-return result;
+return str.split(' ').join('').toUpperCase();
 }
+
 // 3
 function  bestTeam( player1, player2 ) {
-          // You have to write your code here
+          
          if(typeof player1 !== 'object' || typeof player2 !== 'object' ){
            return  "Invalid";
          }
@@ -48,7 +41,7 @@ function  bestTeam( player1, player2 ) {
 }
 // 4
 function  isSame(arr1 , arr2 ) {
-          // You have to write your code here
+          
           if (Array.isArray(arr1) === false || Array.isArray(arr2) === false){
             return "Invalid";
 
@@ -62,4 +55,38 @@ function  isSame(arr1 , arr2 ) {
             }
         }
         return true;
+}
+
+// 5
+function  resultReport( marks ) {
+         
+          if(Array.isArray(marks) === false){
+            return  "Invalid";
+          }
+          // === 0
+          if(marks.length === 0){
+
+            return { finalScore: 0 , pass: 0, fail: 0} 
+          }
+
+          let total = 0;
+          let passCount = 0;
+          let failCount = 0;
+
+          for (let mark of marks){
+            total += mark;
+            if(mark >= 40){
+              passCount++;
+            }
+            else{
+              failCount++;
+            }
+
+          }
+
+          return {
+            finalScore: Math.round(total / marks.length),
+            pass: passCount,
+            fail: failCount
+          };
 }
